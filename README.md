@@ -5,7 +5,7 @@
 連載「FDE シリーズ」(AIフロンティア) の第 4 回・第 7 回で使った実験 (exp01) そのものです。
 
 - 第 4 回: オントロジーがある AI / ない AI — 検証してみた  https://xs232654.xsrv.jp/ontology-intro-2-with-vs-without-experiment/
-- 第 7 回: 手を動かす — 「社内オントロジー mini」を JSON で定義してエージェントに発注業務を完遂させる (公開後にリンクを追記)
+- 第 7 回: 手を動かす — 「社内オントロジー mini」を JSON で定義してエージェントに発注業務を完遂させる  https://xs232654.xsrv.jp/handson-ontology-mini-json-agent-python/
 
 ## 中身
 
@@ -46,7 +46,7 @@ python run_ab.py report        # -> results.md
 | 孤児オーダー (proposed のまま残る) | B は元の提案を片づけずに去った (3/3) |
 | 文言と実装のズレを報告 | A は ontology.json を読んでいるので矛盾に気づける (A2) |
 
-詳しくは `RESULTS_exp01.md` と連載第 4 回・第 7 回を参照してください。
+詳しくは `RESULTS_exp01.md` と連載第 4 回・第 7 回を参照してください。連載の他の回 (定義 / 成果の溝 / 運用 / 市場 / 経済 / 学習ロードマップ) は https://xs232654.xsrv.jp/ のカテゴリ「FDE・オントロジー」にあります。
 
 ## 自分の業務に置き換える
 
