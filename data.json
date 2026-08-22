@@ -1,0 +1,32 @@
+{
+  "today": "2026-08-22",
+  "now_hour": 14,
+  "products": [
+    {"sku": "ONG-SALMON", "name": "おにぎり 鮭", "price_yen": 150, "cost_yen": 90, "shelf_life_hours": 30, "stock": 6, "safety_stock": 4, "supplier": "SUP-A", "shelf": "SH-1"},
+    {"sku": "ONG-UME", "name": "おにぎり 梅", "price_yen": 140, "cost_yen": 85, "shelf_life_hours": 30, "stock": 9, "safety_stock": 3, "supplier": "SUP-A", "shelf": "SH-1"},
+    {"sku": "SND-EGG", "name": "たまごサンド", "price_yen": 260, "cost_yen": 160, "shelf_life_hours": 24, "stock": 2, "safety_stock": 2, "supplier": "SUP-B", "shelf": "SH-2"}
+  ],
+  "suppliers": [
+    {"id": "SUP-A", "name": "米飯ベンダー", "order_cutoff_hour": 16, "lead_time_hours": 14},
+    {"id": "SUP-B", "name": "サンド工場", "order_cutoff_hour": 15, "lead_time_hours": 18}
+  ],
+  "shelves": [{"id": "SH-1", "capacity": 40}, {"id": "SH-2", "capacity": 20}],
+  "sales": [
+    {"date": "2026-08-15", "sku": "ONG-SALMON", "sold": 24, "wasted": 2}, {"date": "2026-08-16", "sku": "ONG-SALMON", "sold": 31, "wasted": 0},
+    {"date": "2026-08-17", "sku": "ONG-SALMON", "sold": 28, "wasted": 1}, {"date": "2026-08-18", "sku": "ONG-SALMON", "sold": 22, "wasted": 3},
+    {"date": "2026-08-19", "sku": "ONG-SALMON", "sold": 25, "wasted": 1}, {"date": "2026-08-20", "sku": "ONG-SALMON", "sold": 27, "wasted": 0},
+    {"date": "2026-08-21", "sku": "ONG-SALMON", "sold": 25, "wasted": 2},
+    {"date": "2026-08-15", "sku": "ONG-UME", "sold": 15, "wasted": 1}, {"date": "2026-08-16", "sku": "ONG-UME", "sold": 18, "wasted": 0},
+    {"date": "2026-08-17", "sku": "ONG-UME", "sold": 16, "wasted": 2}, {"date": "2026-08-18", "sku": "ONG-UME", "sold": 14, "wasted": 1},
+    {"date": "2026-08-19", "sku": "ONG-UME", "sold": 17, "wasted": 0}, {"date": "2026-08-20", "sku": "ONG-UME", "sold": 15, "wasted": 1},
+    {"date": "2026-08-21", "sku": "ONG-UME", "sold": 16, "wasted": 1},
+    {"date": "2026-08-15", "sku": "SND-EGG", "sold": 9, "wasted": 1}, {"date": "2026-08-16", "sku": "SND-EGG", "sold": 11, "wasted": 0},
+    {"date": "2026-08-17", "sku": "SND-EGG", "sold": 10, "wasted": 0}, {"date": "2026-08-18", "sku": "SND-EGG", "sold": 8, "wasted": 2},
+    {"date": "2026-08-19", "sku": "SND-EGG", "sold": 12, "wasted": 0}, {"date": "2026-08-20", "sku": "SND-EGG", "sold": 10, "wasted": 1},
+    {"date": "2026-08-21", "sku": "SND-EGG", "sold": 9, "wasted": 1}
+  ],
+  "forecast": [
+    {"date": "2026-08-23", "weather": "晴れ", "event_nearby": "夏祭り (駅前, 17-21時)", "demand_multiplier": 1.6}
+  ],
+  "orders": []
+}

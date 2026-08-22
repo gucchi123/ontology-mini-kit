@@ -1,0 +1,34 @@
+{
+  "name": "コンビニ1店舗の発注オントロジー (mini)",
+  "version": "2026-08-22",
+  "nouns": {
+    "Product": {
+      "description": "店で売る商品。1 SKU = 1 オブジェクト",
+      "properties": {"sku": "文字列 ID", "name": "表示名", "price_yen": "売価", "cost_yen": "原価", "shelf_life_hours": "消費期限までの時間", "stock": "現在の店頭在庫数", "safety_stock": "安全在庫数"},
+      "links": {"supplier": "Supplier (この商品の仕入先)", "shelf": "Shelf (置かれている棚)", "sales": "SalesRecord[] (販売実績)"}
+    },
+    "Supplier": {"description": "仕入先", "properties": {"id": "ID", "name": "名前", "order_cutoff_hour": "当日便の発注締切 (時)", "lead_time_hours": "納品までの時間"}},
+    "Shelf": {"description": "棚", "properties": {"id": "ID", "capacity": "容量 (個)"}},
+    "SalesRecord": {"description": "日別の販売実績", "properties": {"date": "日付", "sku": "商品", "sold": "売れた数", "wasted": "廃棄した数"}},
+    "Forecast": {"description": "外部要因", "properties": {"date": "日付", "weather": "天気", "event_nearby": "近隣イベント (無ければ null)", "demand_multiplier": "需要倍率の目安"}},
+    "Order": {"description": "発注。confirm されるまでは提案扱い", "properties": {"order_id": "ID", "sku": "商品", "qty": "数量", "delivery_date": "納品日", "status": "proposed | confirmed | rejected", "created_by": "誰が作ったか"}}
+  },
+  "verbs": {
+    "recommend_qty": {"description": "推奨発注数を計算する", "formula": "round(直近7日の平均売上 × 需要倍率) − 現在在庫 + 安全在庫。負なら 0", "inputs": ["sku", "date"], "returns": "推奨数と内訳"},
+    "propose_order": {"description": "発注を『提案』として作る (status=proposed)。誰でも可", "inputs": ["sku", "qty", "delivery_date"]},
+    "confirm_order": {"description": "提案を確定する (status=confirmed)。権限規則に従う", "inputs": ["order_id", "actor_role"]},
+    "request_approval": {"description": "自動確定できない提案を店長承認に回す", "inputs": ["order_id", "reason"]}
+  },
+  "permissions": {
+    "roles": ["clerk", "manager", "ai_agent"],
+    "rules": [
+      "propose_order は誰でもできる",
+      "confirm_order は manager と clerk ができる",
+      "ai_agent は、qty が『直近7日平均売上 × 当日の需要倍率』の ±20% 以内 かつ 発注締切前 のときだけ confirm_order できる (自動確定)  ※2026-08-22 v2: 実装 (recommend/confirm の判定式) と文言を一致させた",
+      "それ以外の ai_agent の確定は禁止。request_approval で店長に回すこと",
+      "0時〜5時の間は ai_agent の自動確定を禁止",
+      "発注締切 (supplier.order_cutoff_hour) を過ぎた当日便の発注はできない"
+    ]
+  },
+  "glossary": {"直近7日平均売上": "SalesRecord の直近7日の sold の平均", "自動確定": "ai_agent が confirm_order まで行うこと"}
+}
