@@ -55,6 +55,10 @@ python run_ab.py report        # -> results.md
 3. ログを 1 行 1 呼び出しで残す
 4. あり / なしで 3 回ずつ走らせ、上の表を埋める
 
+## 拡張例: 出所・確かさ・二つの時刻（2026-10 追加）
+
+`ontology_provenance_example.json` は、記録ごとに「どこから得たか（source）」「どれくらい信じてよいか（confidence: 一次 / 二次 / 未確認）」「実際に起きた時刻（occurred_at）」「システムが知った時刻（recorded_at）」を持たせる例です。確かさが未確認の値を根拠にした確定（confirm）を拒否する権限ルールの書き方も入れています。元の `ontology.json` と実験キットは変えていません。
+
 ## ライセンス
 
 MIT

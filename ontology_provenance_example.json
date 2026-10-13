@@ -1,0 +1,28 @@
+{
+  "_note": "P12「出所・確かさ・二つの時刻」の拡張例 (2026-10-13 追加、講座 FDE実践入門 P12 l4)。元の ontology.json は変えていない。",
+  "name": "コンビニ1店舗の発注オントロジー (mini)",
+  "version": "2026-08-22+provenance-example",
+  "record_meta_fields": {
+    "source": "その値をどこから得たか (例: POS 連携 / 店長メモ / 手入力)",
+    "confidence": "一次 / 二次 / 未確認 の 3 段階",
+    "occurred_at": "出来事が実際に起きた時刻",
+    "recorded_at": "システムがそれを知った (記録した) 時刻"
+  },
+  "permission_rule_example": {
+    "verb": "confirm",
+    "deny_if": "根拠の値の confidence が 未確認"
+  },
+  "example_record": {
+    "noun": "SalesRecord",
+    "value": {
+      "sku": "(例)",
+      "qty": 12
+    },
+    "meta": {
+      "source": "POS 連携",
+      "confidence": "一次",
+      "occurred_at": "2026-10-10T18:00:00+09:00",
+      "recorded_at": "2026-10-11T02:00:00+09:00"
+    }
+  }
+}
